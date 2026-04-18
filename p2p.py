@@ -29,5 +29,10 @@ def send_message():
     PORT = str(input("Введите порт того, кому вы хотите отправить сообщение: "))
     sock.sendto(bytes(message, "utf-8"), (IP, PORT))
     
+def receive_message():
+    while True:
+        data, addr = sock.recvfrom(1024)
+        print(f"Сообщение с {addr}: {data.decode()}")
+    
 get_external_info()
 send_message()
